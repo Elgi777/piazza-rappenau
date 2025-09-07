@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+
+<html lang="de">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>
+   Piazza Rappenau
+  </title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+   * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      background-color: #f7f7f7;
+      color: #333;
+      line-height: 1.6;
+    }
+    header {
+      background-color: #fff;
+      padding: 10px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #e0e0e0;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo img {
+      height: 40px;
+      width: auto;
+    }
+    .logo span {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #c59d5f;
+    }
+    nav {
+      display: flex;
+      gap: 25px;
+    }
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #c59d5f;
+    }
+    .hero {
+      padding: 100px 40px;
+      text-align: center;
+      background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+        url('https://images.unsplash.com/photo-1511920170033-f8396924c348') no-repeat center center/cover;
+      color: white;
+    }
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+    }
+    .hero p {
+      font-size: 1.3rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .about {
+      padding: 60px 40px;
+      max-width: 1000px;
+      margin: auto;
+      text-align: center;
+    }
+    .about h2 {
+      font-size: 2.4rem;
+      margin-bottom: 20px;
+      color: #c59d5f;
+    }
+    .about p {
+      font-size: 1.2rem;
+      margin-bottom: 40px;
+    }
+    .hours {
+      background: #fff;
+      max-width: 700px;
+      margin: 0 auto 60px;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    .hours h2 {
+      font-size: 2rem;
+      color: #c59d5f;
+      margin-bottom: 20px;
+    }
+    .hours ul {
+      list-style: none;
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 40px;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .carousel-wrapper {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 1200px;
+  margin: 40px auto;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 1s ease-in-out;
+}
+
+.carousel-image {
+  width: 100vw;
+  max-width: 100%;
+  max-height: 600px;
+  object-fit: contain;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+/* Buttons */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+  border: none;
+  font-size: 2rem;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 10;
+}
+
+.carousel-btn.left { left: 15px; }
+.carousel-btn.right { right: 15px; }
+
+/* Popup */
+.popup {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.popup img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 8px;
+}
+
+    footer {
+      background: #222;
+      color: #fff;
+      text-align: center;
+      padding: 20px 40px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+<header>
+<div class="logo">
+<img alt="Piazza Rappenau Logo" src="logo.png"/>
+<span>
+     Piazza Rappenau
+    </span>
+</div>
+<nav>
+<a href="#menu">
+     Menü
+    </a>
+<a href="#gallery">
+     Galerie
+    </a>
+</nav>
+</header>
+<section class="hero" id="hero">
+<h1>
+    Willkommen bei Piazza Rappenau
+   </h1>
+<p>
+    Ein stilvolles Bistro-Bar-Erlebnis mit feinem Kaffee, kreativen Cocktails und leckeren Snacks im Herzen von Rappenau.
+   </p>
+</section>
+<section class="about" id="about">
+<h2>
+    Unsere Geschichte
+   </h2>
+<p>
+    Piazza Rappenau ist mehr als nur ein Café – es ist ein moderner Treffpunkt für Kaffeeliebhaber, Cocktailfreunde und Genießer kleiner Speisen.
+      Mit einem eleganten Ambiente und herzlicher Gastfreundschaft bieten wir eine vielfältige Auswahl: vom aromatischen Espresso bis hin zu erfrischenden Signature-Drinks und feinen Snacks für den kleinen Hunger.
+      Ob zum Frühstück, Afterwork oder Wochenend-Brunch – bei uns finden Sie die perfekte Atmosphäre.
+   </p>
+</section>
+<section class="hours" id="hours">
+<h2>
+    Öffnungszeiten
+   </h2>
+<ul>
+<li>
+     Montag – Donnerstag: 09:00 – 22:00 Uhr
+    </li>
+<li>
+     Freitag – Samstag: 08:00 – 00:00 Uhr
+    </li>
+<li>
+     Sonntag: 09:00 – 21:30 Uhr
+    </li>
+</ul>
+</section>
+<div class="gallery" id="gallery">
+<img alt="Innenbereich des Cafés" src="photo1.jpeg"/>
+<img alt="Tische und Atmosphäre" src="photo2.jpeg"/>
+<img alt="Barista bei der Arbeit" src="photo3.jpeg"/>
+</div>
+<!-- Carousel Container -->
+<div class="carousel-wrapper">
+<div id="menu" class="carousel-wrapper">
+  <div class="carousel-track" id="carouselTrack">
+    <img src="menu1.png" alt="Menu 1" class="carousel-image" onclick="openPopup(this.src)">
+    <img src="menu2.png" alt="Menu 2" class="carousel-image" onclick="openPopup(this.src)">
+  </div>
+  <button class="carousel-btn left" onclick="prevSlide()">‹</button>
+  <button class="carousel-btn right" onclick="nextSlide()">›</button>
+</div>
+
+
+<!-- Popup Modal -->
+<div id="popup" class="popup" onclick="closePopup()">
+  <img id="popup-img" src="" alt="Popup" />
+</div>
+
+<footer>
+<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; padding: 20px; background-color: #333; color: white;">
+<div style="width: 100%; max-width: 600px;">
+<iframe allowfullscreen="" height="250" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2604.929202504991!2d9.099627775615168!3d49.23983147138641!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4797890054e307db%3A0xa8c76d5b117b1b60!2sPiazza%20Rappenau!5e0!3m2!1sen!2s!4v1757196692118!5m2!1sen!2s" style="border:0; max-width: 400px; width: 100%; height: 250px;" width="100%"></iframe>
+</div>
+<p style="text-align: center;">
+     Adresse: KIRCHPLATZ 5-74906 BAD RAPPENAU 
+    </p>
+<div style="display: flex; gap: 30px; justify-content: center;">
+<a href="https://www.instagram.com/piazza_rappenau" style="color: white;" target="_blank">
+<i class="fab fa-instagram fa-2x">
+</i>
+</a>
+<a href="https://www.tiktok.com/@piazza_rappenau" style="color: white;" target="_blank">
+<i class="fab fa-tiktok fa-2x">
+</i>
+</a>
+</div>
+</div>
+<footer class="footer">
+  <p>© 2025 Piazza Rappenau. Alle Rechte vorbehalten.</p>
+</footer>
+
+</footer>
+<script>
+   let currentIndex = 0;
+    const carousel = document.getElementById('carousel');
+    const totalSlides = carousel.children.length;
+
+    function showSlide(index) {
+      const slideWidth = carousel.clientWidth;
+      carousel.style.transform = `translateX(-${index * slideWidth}px)`;
+    }
+
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % totalSlides;
+      showSlide(currentIndex);
+    }
+
+    function prevSlide() {
+      currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+      showSlide(currentIndex);
+    }
+
+    window.addEventListener('resize', () => showSlide(currentIndex));
+  </script>
+<style>
+   #scrollTopBtn {
+    position: fixed;
+    bottom: 30px;
+    left: 20px;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+    padding: 12px 16px;
+    border-radius: 50%;
+    font-size: 18px;
+    display: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  }
+  #scrollTopBtn:hover {
+    background-color: #555;
+  }
+  </style>
+<button id="scrollTopBtn" onclick="topFunction()" title="Go to top">
+   ↑
+  </button>
+<script>
+   let mybutton = document.getElementById("scrollTopBtn");
+
+  window.onscroll = function() {
+    scrollFunction();
+  };
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+      mybutton.style.display = "block";
+    } else {
+      mybutton.style.display = "none";
+    }
+  }
+
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+  
+  const carouselTrack = document.getElementById('carouselTrack');
+  const images = document.querySelectorAll('.carousel-image');
+  let index = 0;
+
+  function showSlide(i) {
+    index = (i + images.length) % images.length;
+    carouselTrack.style.transform = `translateX(-${index * 100}vw)`;
+  }
+
+  function nextSlide() {
+    showSlide(index + 1);
+  }
+
+  function prevSlide() {
+    showSlide(index - 1);
+  }
+
+  // Auto slide
+  setInterval(nextSlide, 7000);
+
+  // Popup
+  function openPopup(src) {
+    document.getElementById('popup-img').src = src;
+    document.getElementById('popup').style.display = 'flex';
+  }
+
+  function closePopup() {
+    document.getElementById('popup').style.display = 'none';
+  }
+
+
+  </script>
+</body>
+</html>
